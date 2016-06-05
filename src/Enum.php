@@ -6,14 +6,12 @@ use Closure;
 use ReflectionClass;
 
 /**
- * Class Enum
- *
- * @package RunMyBusiness\Enum
+ * Class Enum.
  */
 trait Enum
 {
     /**
-     * Get the code for a constant label
+     * Get the code for a constant label.
      *
      * @param string $label
      *
@@ -23,11 +21,12 @@ trait Enum
     {
         $class = new ReflectionClass(get_called_class());
         $constants = $class->getConstants();
+
         return $constants[strtoupper($label)];
     }
 
     /**
-     * Get the label for a constant code
+     * Get the label for a constant code.
      *
      * @param mixed  $code
      * @param string $prefix
@@ -42,13 +41,14 @@ trait Enum
 
         if ($prefix) {
             foreach ($constants as $key => $val) {
-                if (! starts_with($key, $prefix)) {
+                if (!starts_with($key, $prefix)) {
                     unset($constants[$key]);
                 }
             }
         }
 
         $constants = array_flip($constants);
+
         return ($strip_text) ? str_replace($prefix, '', $constants[(int) $code]) : $constants[(int) $code];
     }
 
@@ -64,14 +64,13 @@ trait Enum
     }
 
     /**
-     * Get the list of constants
+     * Get the list of constants.
      *
      * @param string|null $prefix
      * @param bool        $strip_text
      * @param \Closure    $transformKey
      *
      * @return array
-     *
      */
     public static function getConstantList(string $prefix = null, bool $strip_text = true, Closure $transformKey = null) : array
     {
@@ -80,7 +79,7 @@ trait Enum
 
         $list = [];
         foreach ($constants as $key => $val) {
-            if ($prefix && ! starts_with($key, $prefix)) {
+            if ($prefix && !starts_with($key, $prefix)) {
                 unset($constants[$key]);
                 continue;
             }
@@ -100,7 +99,7 @@ trait Enum
     }
 
     /**
-     * Get the codes the constants provide
+     * Get the codes the constants provide.
      *
      * @param null|string $prefix
      *

@@ -11,7 +11,6 @@ use PHPUnit_Framework_TestCase;
  */
 class EnumTest extends PHPUnit_Framework_TestCase
 {
-
     public function testGetCode()
     {
         $code = DummyClass::getCode('status_archived');
