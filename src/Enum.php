@@ -97,14 +97,15 @@ trait Enum
 
         return $list;
     }
-    
+
     /**
      * Get a code => label list of constants by providing their values.
-     * 
-     * @param array $values
-     * @param string $prefix
-     * @param bool $strip_text
+     *
+     * @param array        $values
+     * @param string       $prefix
+     * @param bool         $strip_text
      * @param Closure|null $transformKey
+     *
      * @return array
      */
     public static function getConstantListByValues(array $values, string $prefix = '', bool $strip_text = true, Closure $transformKey = null) : array
